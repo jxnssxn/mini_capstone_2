@@ -1,6 +1,8 @@
+@products.map do |product|
 {
-  name: @products.name,
-  price: @products.price,
-  image_url: @products.image_url,
-  description: @products.description
+  name: product.name,
+  price: product.price,
+  image_url: product.image_url,
+  decription: product.description
 }
+end
