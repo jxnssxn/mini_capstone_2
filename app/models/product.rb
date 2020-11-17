@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+
+  validates :name, :price, presence: true
+  
+
   def tax
     price * 0.0875
   end

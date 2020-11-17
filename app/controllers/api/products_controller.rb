@@ -2,6 +2,9 @@ class Api::ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    search = params[:search]
+    if search
+      @products = Product.where()
     render "index.json.jb"
   end
 
@@ -12,8 +15,11 @@ class Api::ProductsController < ApplicationController
       image_url: params[:image_url],
       description: params[:description],
     )
-    @product.save
-    render "create.json.jb"
+    if @product.save    
+      render "create.json.jb"
+    else
+      render json: {errors: @product.errors.full_messages}
+    end
   end
 
   def show
